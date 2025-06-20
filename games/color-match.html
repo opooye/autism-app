@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Match Game</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .game-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 20px;
+    }
+
+    .color-btn {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 3px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎨 Match the Colors!</h1>
+    <nav><a href="../index.html">🏠 Back to Home</a></nav>
+  </header>
+
+  <main>
+    <p>Click the box that matches the name below:</p>
+    <h2 id="colorName">Red</h2>
+
+    <div class="game-box" id="buttons">
+      <!-- Color buttons created by JS -->
+    </div>
+
+    <p id="resultMsg"></p>
+  </main>
+
+  <script>
+    const colors = [
+      { name: "Red", code: "#f44336" },
+      { name: "Blue", code: "#2196f3" },
+      { name: "Green", code: "#4caf50" },
+      { name: "Yellow", code: "#ffeb3b" }
+    ];
+
+    let answerIndex = 0;
+    const colorNameEl = document.getElementById("colorName");
+    const buttonsEl = document.getElementById("buttons");
+    const resultMsg = document.getElementById("resultMsg");
+
+    function renderButtons() {
+      buttonsEl.innerHTML = '';
+      colors.forEach((color, index) => {
+        const btn = document.createElement("div");
+        btn.className = "color-btn";
+        btn.style.backgroundColor = color.code;
+        btn.onclick = () => checkAnswer(index);
+        buttonsEl.appendChild(btn);
+      });
+    }
+
+    function pickColor() {
+      answerIndex = Math.floor(Math.random() * colors.length);
+      colorNameEl.textContent = colors[answerIndex].name;
+    }
+
+    function checkAnswer(index) {
+      if (index === answerIndex) {
+        resultMsg.textContent = "🎉 Great job!";
+        setTimeout(() => {
+          pickColor();
+          renderButtons();
+          resultMsg.textContent = "";
+        }, 1000);
+      } else {
+        resultMsg.textContent = "Try again!";
+      }
+    }
+
+    pickColor();
+    renderButtons();
+  </script>
+</body>
+</html>
