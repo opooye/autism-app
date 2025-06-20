@@ -1,0 +1,46 @@
+body {
+  font-family: 'Comic Sans MS', sans-serif;
+  background: #f0f9ff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4dabf7;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+main {
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  color: #22689e;
+}
+
+section {
+  background: #e7f3ff;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background: #4dabf7;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
